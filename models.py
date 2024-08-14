@@ -91,7 +91,7 @@ class VAE(nn.Module):
 
     # total loss
     loss = recon_loss + self.kld_weight * kld
-    return loss
+    return recon_loss, kld
 
   def reparameterize(self, mu, log_var):
     epsilon = torch.randn_like(log_var)
