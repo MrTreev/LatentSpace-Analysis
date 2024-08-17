@@ -103,10 +103,10 @@ def plot_latent_space_summary(model_vae, model_ae, dataloader, num_batches=15):
     return
   if model_vae.latent_dim < 3:
     # plot 2d
-    plot_latent_2d(model_vae, model_ae, dataloader, colors_list)
+    plot_latent_2d(model_vae, model_ae, dataloader, colors_list, num_batches)
   else:
     # plot tsne
-    plot_latent_TSNE(model_vae, model_ae, dataloader, colors_list)
+    plot_latent_TSNE(model_vae, model_ae, dataloader, colors_list, num_batches)
 
 def plot_latent_TSNE(model_vae, model_ae, dataloader, colors_list, num_batches=15):
   """
