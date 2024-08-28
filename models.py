@@ -52,7 +52,7 @@ class VAE(nn.Module):
     super().__init__()
     self.in_channels = in_channels
     self.latent_dim = latent_dim
-    self.kld_weight = kld_weight
+    self.kld_loss_weight = kld_weight
 
     self.encoder = nn.Sequential(
         nn.Conv2d(in_channels, 32, 3, stride=2, padding=1), # out: N, 16, 14, 14
