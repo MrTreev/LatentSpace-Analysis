@@ -89,8 +89,6 @@ class VAE(nn.Module):
     # reconstruction loss
     recon_loss = F.mse_loss(x_recon, x)
 
-    # total loss
-    loss = recon_loss + self.kld_weight * kld
     return recon_loss, kld
 
   def reparameterize(self, mu, log_var):
