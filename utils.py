@@ -172,10 +172,10 @@ def traverse_latent_space(start_z_vae, start_z_ae, model_vae, model_ae, dimensio
   fig_interpolate_zero, axs_interpolate_zero = plt.subplots(2, num_samples)
   axs_interpolate_zero[0][5].set_title('original VAE reconstruction')
   axs_interpolate_zero[1][5].set_title('original AE reconstruction')
-  axs_interpolate_zero[0][3].set_title(f'<-- subtracting {rate_of_change} from dim {dimension_to_change}')
-  axs_interpolate_zero[1][3].set_title(f'<-- subtracting {rate_of_change} from dim {dimension_to_change}')
-  axs_interpolate_zero[0][7].set_title(f'adding {rate_of_change} to dim{dimension_to_change}-->')
-  axs_interpolate_zero[1][7].set_title(f'adding {rate_of_change} to dim{dimension_to_change}-->')
+  axs_interpolate_zero[0][3].set_title(f'<-- subtracting {rate_of_change} from entry {dimension_to_change}')
+  axs_interpolate_zero[1][3].set_title(f'<-- subtracting {rate_of_change} from entry {dimension_to_change}')
+  axs_interpolate_zero[0][7].set_title(f'adding {rate_of_change} to entry {dimension_to_change}-->')
+  axs_interpolate_zero[1][7].set_title(f'adding {rate_of_change} to entry {dimension_to_change}-->')
   for item in axs_interpolate_zero[:]:
     for plot in item:
       plot.set_xticks([])
