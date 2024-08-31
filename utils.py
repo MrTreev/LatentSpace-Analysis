@@ -134,6 +134,9 @@ def plot_latent_TSNE(model_vae, model_ae, dataloader, colors_list, num_batches=1
 
   tsne_axs[0].set_title('VAE Latent Space - TSNE representation')
   tsne_axs[1].set_title('AE Latent Space - TSNE representation')
+  for ax in tsne_axs:
+      ax.set_xticks([])
+      ax.set_yticks([])
 
   tsne_axs[0].scatter(z_vae_embedded[:, 0], z_vae_embedded[:, 1], c=classes_as_colors)
   tsne_axs[1].scatter(z_ae_embedded[:, 0], z_ae_embedded[:, 1], c=classes_as_colors)
@@ -219,6 +222,10 @@ def interpolate_btwn_classes(class_start, class_end, x, y, model_in, num_steps=5
   axsc[1].set_title('Reconstruction of original image')
   axsc[-1].set_title(f'Interpolated img from {class_start} to {class_end}')
 
+  for ax in axsc:
+      ax.set_xticks([])
+      ax.set_yticks([])
+
   for step in range(num_steps):
     z_to_add = alpha * step * (1/(num_steps-1)) * (end_avg_z - start_avg_z)
     axsc[step+1].imshow(model_in.decoder(z_sample_start + z_to_add).cpu().detach().squeeze(dim=0).numpy().transpose(1, 2, 0))
@@ -249,9 +256,13 @@ def show_random_samples(model_vae, model_ae, input_z, num_samples=4):
     ae_recon = model_ae.decoder(random_z)
 
     axs[row][0].set_title(f'VAE reconstruction of randomly generated latent #{row}')
+    axs[row][0].set_xticks([])
+    axs[row][0].set_yticks([])
     axs[row][0].imshow(vae_recon.cpu().detach().numpy().transpose(1, 2, 0))
 
     axs[row][1].set_title(f'AE reconstruction of randomly generated latent #{row}')
+    axs[row][1].set_xticks([])
+    axs[row][1].set_yticks([])
     axs[row][1].imshow(ae_recon.cpu().detach().numpy().transpose(1, 2, 0))
 
   fig.tight_layout()
@@ -272,14 +283,20 @@ def display_reconstructed_x(dataloader, model_vae, model_ae, num_reconstructions
   for row in range(num_reconstructions):
     # show original image
     axs[row][0].set_title('Original image')
+    axs[row][0].set_xticks([])
+    axs[row][0].set_yticks([])
     axs[row][0].imshow(x[row].cpu().numpy().transpose(1, 2, 0))
 
     # show VAE reconstruction
     axs[row][1].set_title('VAE reconstruction')
+    axs[row][1].set_xticks([])
+    axs[row][1].set_yticks([])
     axs[row][1].imshow(recon_vae[row].cpu().detach().numpy().transpose(1, 2, 0))
 
     # show AE reconstruction
     axs[row][2].set_title('AE reconstruction')
+    axs[row][2].set_xticks([])
+    axs[row][2].set_yticks([])
     axs[row][2].imshow(recon_ae[row].cpu().detach().numpy().transpose(1, 2, 0))
 
 
